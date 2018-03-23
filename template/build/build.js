@@ -3,6 +3,16 @@ require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
+// const args = process.argv.splice(2)
+// process.env.BUILD_ENV = args[0]
+if (process.env.npm_config_qa) {
+  process.env.BUILD_ENV = 'qa'
+} else if (process.env.npm_config_pre) {
+  process.env.BUILD_ENV = 'pre'
+} else {
+  process.env.BUILD_ENV = 'prod'
+}
+
 const ora = require('ora')
 const rm = require('rimraf')
 const path = require('path')
