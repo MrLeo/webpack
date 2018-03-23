@@ -2,7 +2,7 @@
  * @Author: Leo - [xuebin.me]
  * @Date: 2017-11-14 22:42:27
  * @Last Modified by: Leo
- * @Last Modified time: 2017-12-29 14:10:03
+ * @Last Modified time: 2018-03-23 15:01:32
  */
 
 // #region 设备类型
@@ -13,7 +13,7 @@
 export const browser = {
   versions: (function() {
     let u = navigator.userAgent;
-    let app = navigator.appVersion;
+    // let app = navigator.appVersion;
     return {
       trident: u.indexOf('Trident') > -1, // IE内核
       presto: u.indexOf('Presto') > -1, // opera内核
