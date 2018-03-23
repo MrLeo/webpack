@@ -5,8 +5,6 @@
  * Created with JetBrains WebStorm.
  */
 
-// eslint-disable-next-line no-unused-vars
-
 const miniToastr = (function() {
   // fix for server-side rendering
   if (typeof window === 'undefined') {
@@ -75,10 +73,15 @@ const miniToastr = (function() {
     const flat = flatten(obj);
     let str = JSON.stringify(flat, null, 2);
     str = str
+      // eslint-disable-next-line
       .replace(/"([^"]*)": \{/g, '$1 {')
+      // eslint-disable-next-line
       .replace(/"([^"]*)"/g, '$1')
+      // eslint-disable-next-line
       .replace(/(\w*-?\w*): ([\w\d .#%\(\)-]*),?/g, '$1: $2;')
+      // eslint-disable-next-line
       .replace(/},/g, '}\n')
+      // eslint-disable-next-line
       .replace(/ &([.:])/g, '$1');
 
     str = str.substr(1, str.lastIndexOf('}') - 1);
