@@ -12,7 +12,9 @@ npm install
 npm run dev
 
 # build for production with minification
-npm run build
+npm run build # prod - 线上环境
+npm run build --pre # pre - 预上线环境
+npm run build --qa # qa - 测试环境
 
 # build for production and view the bundle analyzer report
 npm run build --report

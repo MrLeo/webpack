@@ -11,9 +11,23 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const env = {{#if_or unit e2e}}process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : {{/if_or}}require('../config/prod.env')
+// const env = {{#if_or unit e2e}}process.env.NODE_ENV === 'testing' ? require('../config/test.env') : {{/if_or}}require('../config/prod.env')
+let env = {}
+{{#if_or unit e2e}}
+if (process.env.NODE_ENV === 'testing') {
+  env = require('../config/test.env')
+} else {
+{{/if_or}}
+  if (process.env.BUILD_ENV === 'qa') {
+    env = require('../config/qa.env')
+  } else if (process.env.BUILD_ENV === 'pre') {
+    env = require('../config/pre.env')
+  } else {
+    env = require('../config/prod.env')
+  }
+{{#if_or unit e2e}}
+}
+{{/if_or}}
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -48,7 +62,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       filename: utils.assetsPath('css/[name].[contenthash].css'),
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
       // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
+      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
       // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
       allChunks: true,
     }),
