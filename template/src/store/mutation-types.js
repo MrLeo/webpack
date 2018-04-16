@@ -2,7 +2,7 @@
  * @Author: Leo - [xuebin.me]
  * @Date: 2017-12-29 13:59:41
  * @Last Modified by: Leo
- * @Last Modified time: 2018-04-16 09:58:18
+ * @Last Modified time: 2018-04-16 13:33:44
  */
 
 export default {
@@ -20,12 +20,12 @@ export default {
       let rKey = r(key)
       let newKey = key.replace(/^\.\/modules\/(.*)\.js$/g, '$1')
       let namespaced = rKey.default.namespaced ? `${newKey}/` : ''
-      sourceMap[newKey] = {}
+      sourceMap[newKey] = { mutations: {}, actions: {}}
       for (let key in rKey.default.mutations) {
-        sourceMap[newKey]['mutations'] = `${namespaced}${key}`
+        sourceMap[newKey]['mutations'][key] = `${namespaced}${key}`
       }
       for (let key in rKey.default.actions) {
-        sourceMap[newKey]['actions'] = `${namespaced}${key}`
+        sourceMap[newKey]['actions'][key] = `${namespaced}${key}`
       }
       return rKey.default
     })
