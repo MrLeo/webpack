@@ -2,7 +2,7 @@
  * @Author: Leo - [xuebin.me]
  * @Date: 2018-03-23 13:40:12
  * @Last Modified by: Leo
- * @Last Modified time: 2018-03-23 14:18:22
+ * @Last Modified time: 2018-04-16 09:10:08
  */
 /*
  *                      _ooOoo_
@@ -37,6 +37,8 @@ import router from './router'
 {{/router}}
 {{#vuex}}
 import store from './store'
+// import base from './store/modules/base'
+// store.registerModule('base', base) // 动态注册模块
 {{/vuex}}
 
 Vue.config.productionTip = false

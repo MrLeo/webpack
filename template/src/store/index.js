@@ -2,7 +2,7 @@
  * @Author: Leo - [xuebin.me]
  * @Date: 2017-12-29 13:59:45
  * @Last Modified by: Leo
- * @Last Modified time: 2018-03-21 16:16:32
+ * @Last Modified time: 2018-04-16 09:09:13
  */
 // https://github.com/vuejs/vuex/tree/dev/examples/shopping-cart/store
 

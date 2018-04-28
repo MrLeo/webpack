@@ -2,7 +2,7 @@
  * @Author: Leo - [xuebin.me]
  * @Date: 2017-12-29 14:00:07
  * @Last Modified by: Leo
- * @Last Modified time: 2018-03-23 13:35:35
+ * @Last Modified time: 2018-04-16 09:11:46
  */
 
 // import Vue from 'vue'
@@ -33,6 +33,7 @@ const actions = {
 }
 
 export default {
+  // namespaced: true, // vuex模块开启命名空间限制
   state,
   mutations,
   actions,
